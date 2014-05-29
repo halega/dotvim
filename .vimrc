@@ -35,9 +35,12 @@ if has ("gui_running")
 endif
 
 let mapleader = ","
-
-nmap <silent><Leader>p :NERDTreeToggle<CR>
 let NERDTreeWinPos="right"
+
+nmap <silent><leader>n :NERDTreeToggle<CR>
+nmap <silent><leader>p :YRShow<CR>
+
+nnoremap <ESC><ESC> :nohlsearch<CR>
 
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)

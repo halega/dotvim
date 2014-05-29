@@ -3,6 +3,9 @@ syntax on
 filetype plugin indent on
 
 colorscheme lucius
+LuciusWhite
+
+set mouse=a
 
 set linebreak
 set laststatus=2

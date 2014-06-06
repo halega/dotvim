@@ -3,7 +3,7 @@ syntax on
 filetype plugin indent on
 
 colorscheme lucius
-LuciusWhite
+LuciusLight
 
 set mouse=a
 
@@ -39,6 +39,10 @@ let NERDTreeWinPos="right"
 
 nmap <silent><leader>n :NERDTreeToggle<CR>
 nmap <silent><leader>p :YRShow<CR>
+
+let g:ctrlp_map = '<Leader>bf'
+nmap <Leader>bb :CtrlPBuffer<CR>
+nmap <Leader>bm :CtrlPMRUFiles<CR>
 
 nnoremap <ESC><ESC> :nohlsearch<CR>
 

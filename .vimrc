@@ -1,9 +1,9 @@
 execute pathogen#infect()
-syntax on
 filetype plugin indent on
+syntax off
 
 colorscheme lucius
-LuciusLight
+LuciusLightHighContrast
 
 set mouse=a
 

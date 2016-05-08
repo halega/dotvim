@@ -1,12 +1,12 @@
 execute pathogen#infect()
 filetype plugin indent on
-syntax off
+syntax on
 
 colorscheme lucius
-LuciusLightHighContrast
+LuciusWhiteHighContrast
 
 set mouse=a
-
+set nocompatible
 set linebreak
 set laststatus=2
 set number
@@ -27,40 +27,23 @@ set autoindent
 set smartindent
 set incsearch
 
-if has ("gui_running")
-	set go-=T
-	set go-=m
-	set lines=36
-	set columns=100
-endif
-
 let mapleader = ","
+
+vnoremap <Leader>c :%w !xsel -ib<CR><CR>
+noremap <Leader>p :r !xsel -ob<CR><CR>
+
 let NERDTreeWinPos="right"
+nmap <F9> :NERDTreeToggle<CR>
 
-nmap <silent><leader>n :NERDTreeToggle<CR>
-nmap <silent><leader>p :YRShow<CR>
+map <Leader> <Plug>(easymotion-prefix)
+hi link EasyMotionShade Comment
+hi link EasyMotionTarget2First EasyMotionTarget
+hi link EasyMotionTarget2Second Question
 
-let g:ctrlp_map = '<Leader>bf'
-nmap <Leader>bb :CtrlPBuffer<CR>
-nmap <Leader>bm :CtrlPMRUFiles<CR>
-
-nnoremap <ESC><ESC> :nohlsearch<CR>
-
-map <Leader>j <Plug>(easymotion-j)
-map <Leader>k <Plug>(easymotion-k)
-
-au Filetype go nnoremap <leader>m :make<CR>
-
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-
-au FileType go nmap <Leader>gd <Plug>(go-doc)
-au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>gt <Plug>(go-doc-tab)
-
-au FileType go nmap gd <Plug>(go-def)
-au FileType go nmap <Leader>ds <Plug>(go-def-split)
-au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
-au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+let g:go_fmt_command = "goimports"
+au FileType go map <F8> <Plug>(go-build)
+au FileType go map <F5> <Plug>(go-run)
+au FileType go map <C-F5> <Plug>(go-install)
+au FileType go map <Leader>i <Plug>(go-install)
+au FileType go map <F12> <Plug>(go-def)
+au FileType go map <Leader>d <Plug>(go-doc)

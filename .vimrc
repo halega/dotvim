@@ -2,8 +2,18 @@ execute pathogen#infect()
 filetype plugin indent on
 syntax on
 
+" github.com/w0ng/vim-hybrid
+" colorscheme hybrid
+" set background=light
+
+" github.com/jonathanfilip/vim-lucius
 colorscheme lucius
 LuciusWhiteHighContrast
+
+" To switch keymap use i_CTRL+^
+set keymap=russian-jcukenwin
+set iminsert=0
+set imsearch=0
 
 set mouse=a
 set nocompatible

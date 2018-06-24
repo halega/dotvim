@@ -21,12 +21,21 @@ filetype plugin indent on
 syntax on
 set t_Co=256
 
+set encoding=utf-8
+set fileencoding=utf-8
+
 "colors hybrid_material
 "colors hybrid_reverse
 "set background=dark
 
 colorscheme lucius
 LuciusLightHighContrast
+
+if has('gui_running')
+    set lines=36
+    set columns=110
+    set guifont=Consolas:h13:cRUSSIAN
+endif
 
 " Eliminate ESC delay
 set timeoutlen=1000
@@ -47,7 +56,6 @@ set nocursorcolumn
 set nocursorline
 set completeopt=menu,menuone    " Show popup menu, even if there is one entry
 set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
-set encoding=utf-8              " Set default encoding to UTF-8
 
 " Main settings
 set keymap=russian-jcukenwin

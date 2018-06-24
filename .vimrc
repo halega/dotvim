@@ -1,16 +1,55 @@
-execute pathogen#infect()
+call plug#begin('~/.vim/plugged')
+Plug 'jonathanfilip/vim-lucius'
+Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'fatih/vim-go', { 'tag': '*' }
+Plug 'itchyny/lightline.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'jiangmiao/auto-pairs'
+Plug 'jonathanfilip/vim-lucius'
+Plug 'OmniSharp/omnisharp-vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+call plug#end()
+
 filetype plugin indent on
 syntax on
+set t_Co=256
 
-" github.com/w0ng/vim-hybrid
-" colorscheme hybrid
-" set background=light
+"colors hybrid_material
+"colors hybrid_reverse
+"set background=dark
 
-" github.com/jonathanfilip/vim-lucius
 colorscheme lucius
-LuciusWhiteHighContrast
+LuciusLightHighContrast
 
-" To switch keymap use i_CTRL+^
+" Eliminate ESC delay
+set timeoutlen=1000
+set ttimeoutlen=0
+
+" Experimental from https://github.com/fatih/vim-go-tutorial/blob/master/vimrc
+set ttyfast
+set ttyscroll=3
+set autoread
+set noerrorbells
+set noswapfile
+set nobackup
+set autowrite
+set noshowmode
+set pumheight=10
+set lazyredraw
+set nocursorcolumn
+set nocursorline
+set completeopt=menu,menuone    " Show popup menu, even if there is one entry
+set fileformats=unix,dos,mac    " Prefer Unix over Windows over OS 9 formats
+set encoding=utf-8              " Set default encoding to UTF-8
+
+" Main settings
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
@@ -27,8 +66,6 @@ set smartcase
 set backspace=indent,eol,start
 set ruler
 set showcmd
-set showmode
-set noshowmatch
 
 set tabstop=4
 set shiftwidth=4
@@ -39,21 +76,31 @@ set incsearch
 
 let mapleader = ","
 
-vnoremap <Leader>c :%w !xsel -ib<CR><CR>
-noremap <Leader>p :r !xsel -ob<CR><CR>
+" Jump to next error with Ctrl-n and previous error with Ctrl-m. Close the
+" quickfix window with <leader>a
+map <C-n> :cnext<CR>
+map <C-m> :cprevious<CR>
+nnoremap <leader>a :cclose<CR>
 
 let NERDTreeWinPos="right"
 nmap <F9> :NERDTreeToggle<CR>
-
-map <Leader> <Plug>(easymotion-prefix)
-hi link EasyMotionShade Comment
-hi link EasyMotionTarget2First EasyMotionTarget
-hi link EasyMotionTarget2Second Question
+nmap <C-p> :FZF<CR>
 
 let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
 au FileType go map <F8> <Plug>(go-build)
 au FileType go map <F5> <Plug>(go-run)
-au FileType go map <C-F5> <Plug>(go-install)
+au FileType go map <Leader>r :wa<CR>:GoRun<CR>
+au FileType go map <C-F5> :wa<CR>:GoRun<CR>
 au FileType go map <Leader>i <Plug>(go-install)
 au FileType go map <F12> <Plug>(go-def)
 au FileType go map <Leader>d <Plug>(go-doc)
+au FileType go map <Leader>t <Plug>(go-test)
+au FileType go map <Leader>c <Plug>(go-test-func)
+
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_generate_tags = 1

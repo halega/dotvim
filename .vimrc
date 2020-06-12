@@ -32,6 +32,8 @@ if has('gui_running')
     set lines=36
     set columns=110
     set guifont=Consolas:h13:cRUSSIAN
+    set guioptions -=m
+    set guioptions -=T
 endif
 
 " Eliminate ESC delay

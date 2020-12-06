@@ -94,7 +94,8 @@ let NERDTreeWinPos="right"
 nmap <F9> :NERDTreeToggle<CR>
 "nmap <C-p> :FZF<CR>
 
-"let g:go_fmt_command = "goimports"
+let g:go_template_autocreate = 0
+let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 au FileType go map <F8> <Plug>(go-build)
 au FileType go map <F5> <Plug>(go-run)

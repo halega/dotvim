@@ -3,13 +3,14 @@ call plug#begin('~/.vim/plugged')
 Plug 'jonathanfilip/vim-lucius'
 Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'fatih/vim-go'
 Plug 'itchyny/lightline.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-fugitive'
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
@@ -90,9 +91,14 @@ map <C-n> :cnext<CR>
 map <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
 
+map <Leader> <Plug>(easymotion-prefix)
+
 let NERDTreeWinPos="right"
 nmap <F9> :NERDTreeToggle<CR>
-"nmap <C-p> :FZF<CR>
+nnoremap <C-p> :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>h :History<CR>
+nnoremap <Leader>g :Rg<CR>
 
 let g:go_template_autocreate = 0
 let g:go_fmt_command = "goimports"
@@ -106,3 +112,8 @@ au FileType go map <F12> <Plug>(go-def)
 au FileType go map <Leader>d <Plug>(go-doc)
 au FileType go map <Leader>t <Plug>(go-test)
 au FileType go map <Leader>c <Plug>(go-test-func)
+
+au FileType javascript map <Leader>r :call Run()<CR>
+function Run()
+  exec "! node %"
+endfunction
